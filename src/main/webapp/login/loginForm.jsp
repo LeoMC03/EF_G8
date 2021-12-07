@@ -8,18 +8,18 @@
     <body class="text-center">
         <main class="form-signin">
             <form method="post" action="<%=request.getContextPath()%>/LoginServlet">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                <h1 class="h3 mb-3 fw-normal">Por favor ingrese sus credenciales</h1>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" name="inputEmail"
-                           placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
+                    <input type="number" class="form-control" id="floatingInput" name="inputDNI"
+                           placeholder="dni">
+                    <label for="floatingInput">DNI</label>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="floatingPassword" name="inputPassword"
                            placeholder="Password">
-                    <label for="floatingPassword">Password</label>
+                    <label for="floatingPassword">Contraseña</label>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
                 <% if (request.getAttribute("err") != null) { %>
                 <div class="text-danger mt-2">
                     <%=request.getAttribute("err")%>
