@@ -13,7 +13,7 @@ public abstract class BaseDao {
         }
         String user = "root";
         String pass = "root";
-        String url = "jdbc:mysql://localhost:3306/teleshock_oficial?serverTimezone=America/Lima";
+        String url = "jdbc:mysql://localhost:3306/movies?serverTimezone=America/Lima";
         return DriverManager.getConnection(url,user,pass);
     }
 }

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class EmpleadoDao extends BaseDao {
 
-    public Empleado validarEmpleadoPassword(String dni, String password) {
+    public Empleado validarEmpleadoPassword(String dni) {
 
         Empleado empleado = null;
 
