@@ -2,8 +2,6 @@ package com.example.ef_g8.Daos;
 import com.example.ef_g8.Beans.Cine;
 import com.example.ef_g8.Beans.Empleado;
 import com.example.ef_g8.Beans.Rol;
-import com.example.ef_g8.Daos.BaseDao;
-
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
