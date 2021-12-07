@@ -3,7 +3,6 @@
 <jsp:useBean id="employeeSession" type="com.example.ef_g8.Beans.Empleado" scope="session"
              class="com.example.ef_g8.Beans.Empleado"/>
 <jsp:useBean id="top" type="java.lang.String" scope="session"
-             class="java.lang.String"/>
 
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -17,49 +16,20 @@
             <% if (employeeSession.getIdEmpleado() > 0) { %>
             <li class="nav-item">
                 <a class="nav-link <%=currentPage.equals("cou") ? "active" : ""%>"
-                   href="<%=request.getContextPath()%>/CountryServlet">
+                   href="<%=request.getContextPath()%>/CarteleraServlet">
                     Country
                 </a>
-            </li>
-            <% if (session.getAttribute("top") != "- Top 4") {%>
             <li class="nav-item">
                 <a class="nav-link <%=currentPage.equals("loc") ? "active" : ""%>"
-                   href="<%=request.getContextPath()%>/LocationServlet">
+                   href="<%=request.getContextPath()%>/ReportesServlet">
                     Location
                 </a>
             </li>
-            <%}%>
-            <li class="nav-item">
-                <a class="nav-link <%=currentPage.equals("dep") ? "active" : ""%>"
-                   href="<%=request.getContextPath()%>/DepartmentServlet">
-                    Department
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <%=currentPage.equals("emp") ? "active" : ""%>"
-                   href="<%=request.getContextPath()%>/EmployeeServlet">
-                    Employees
-                </a>
-            </li>
-            <% if (session.getAttribute("top") != "- Top 4") {%>
-            <li class="nav-item">
-                <a class="nav-link <%=currentPage.equals("job") ? "active" : ""%>"
-                   href="<%=request.getContextPath()%>/JobServlet">
-                    Jobs
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <%=currentPage.equals("est") ? "active" : ""%>"
-                   href="<%=request.getContextPath()%>/EmployeeServlet?action=est">
-                    Estadisticas
-                </a>
-            </li>
-            <%}%>
 
             <li class="nav-item">
                 <span class="nav-link text-dark">
-                    Bienvenido <%=employeeSession.getNombre()%> <%=employeeSession.getApellido()%> <%=top%>(<a
-                        href="<%=request.getContextPath()%>/LoginServlet?action=logout">cerrar sesion</a>)
+                    Bienvenido <%=employeeSession.getNombre()%> <%=employeeSession.getApellido()%> - Rol: <%=session.getAttribute("rol")%>(<a
+                        href="<%=request.getContextPath()%>/LoginServlet?action=logout">Cerrar sesion</a>)
                 </span>
             </li>
             <% } else { %>
