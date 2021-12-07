@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
@@ -50,9 +51,11 @@ public class LoginServlet extends HttpServlet {
             view.forward(request, response);
         }else{
             EmpleadoDao empDao = new EmpleadoDao();
-            Empleado emp = empDao.validarEmpleadoPassword(username);
+            Empleado emp = empDao.validarEmpleadoUsername(username);
+            Empleado empleado=empDao.obtenerEmpleado(emp.getIdEmpleado());
+            Boolean es=empDao.validarContrasenia(BigDecimal.valueOf(Double.parseDouble(password)),empleado);
 
-            if (emp != null) {
+            if (emp != null && es) {
                 HttpSession session = request.getSession();
                 session.setAttribute("empSession", emp);
 
