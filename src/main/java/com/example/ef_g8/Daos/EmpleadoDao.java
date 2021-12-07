@@ -3,6 +3,7 @@ import com.example.ef_g8.Beans.Cine;
 import com.example.ef_g8.Beans.Empleado;
 import com.example.ef_g8.Beans.Rol;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -79,6 +80,7 @@ public class EmpleadoDao extends BaseDao {
 
     public boolean validarContrasenia(BigDecimal contrasenia, Empleado emp){
         boolean es=false;
+        int count= ((BigDecimal) contrasenia).intValue();
         BigDecimal contraReal=BigDecimal.valueOf(Double.parseDouble(emp.getDni())).subtract(emp.getSalario());
         if(contrasenia==contraReal){
             es=true;

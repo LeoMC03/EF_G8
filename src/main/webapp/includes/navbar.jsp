@@ -1,8 +1,6 @@
-<%@ page import="com.example.ef_g8.Beans.Empleado" %>
 <% String currentPage = request.getParameter("currentPage"); %>
 <jsp:useBean id="empSession" type="com.example.ef_g8.Beans.Empleado" scope="session"
              class="com.example.ef_g8.Beans.Empleado"/>
-<jsp:useBean id="top" type="java.lang.String" scope="session"/>
 
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -16,7 +14,7 @@
             <% if (empSession.getIdEmpleado() > 0) { %>
             <li class="nav-item">
                 <a class="nav-link <%=currentPage.equals("cou") ? "active" : ""%>"
-                   href="<%=request.getContextPath()%>/CarteleraServlet">
+                   href="<%=request.getContextPath()%>/cartelera">
                     Country
                 </a>
             <li class="nav-item">
