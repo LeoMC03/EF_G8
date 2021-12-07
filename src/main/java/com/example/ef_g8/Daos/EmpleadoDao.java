@@ -1,6 +1,7 @@
 package com.example.ef_g8.Daos;
 import com.example.ef_g8.Beans.Cine;
 import com.example.ef_g8.Beans.Empleado;
+import com.example.ef_g8.Beans.Rol;
 import com.example.ef_g8.Daos.BaseDao;
 
 import java.math.BigDecimal;
@@ -8,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmpleadoDao extends BaseDao {
 
@@ -37,7 +39,7 @@ public class EmpleadoDao extends BaseDao {
     public Empleado obtenerEmpleado(int idEmpleado) {
         Empleado empleado = null;
 
-        String sql = "Select * from empleado where idempleado = ?;";
+        String sql = "Select * from empleado e inner join rolempleado r on (r.idempleado=e.idempleado) inner join rol ro on (ro.idrol=r.idrol) where e.idempleado = ?;";
 
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
@@ -48,20 +50,26 @@ public class EmpleadoDao extends BaseDao {
                 if (rs.next()) {
                     empleado = new Empleado();
                     empleado.setIdEmpleado(idEmpleado);
-                    empleado.setNombre(rs.getString(1));
-                    empleado.setApellido(rs.getString(2));
-                    empleado.setDni(rs.getString(3));
-                    empleado.setSalario(rs.getBigDecimal(4));
-                    empleado.setFechaContrato(rs.getString(5));
-                    empleado.setNombreUsuario(rs.getString(6));
-                    empleado.setEdad(rs.getInt(7));
-                    empleado.setActivo(rs.getBoolean(8));
+                    empleado.setNombre(rs.getString(2));
+                    empleado.setApellido(rs.getString(3));
+                    empleado.setDni(rs.getString(4));
+                    empleado.setSalario(rs.getBigDecimal(5));
+                    empleado.setFechaContrato(rs.getString(6));
+                    empleado.setNombreUsuario(rs.getString(7));
+                    empleado.setEdad(rs.getInt(8));
+                    empleado.setActivo(rs.getBoolean(9));
                     Empleado jefe = new Empleado();
-                    jefe.setIdEmpleado(rs.getInt(9));
+                    jefe.setIdEmpleado(rs.getInt(11));
                     Cine cine = new Cine();
                     cine.setIdCine(rs.getInt(10));
                     empleado.setCine(cine);
                     empleado.setJefe(jefe);
+                    ArrayList<Rol> rol= new ArrayList<Rol>();
+                    Rol r=new Rol();
+                    r.setIdRol(rs.getInt(12));
+                    r.setNombre(rs.getString(15));
+                    rol.add(r);
+                    empleado.setRoles(rol);
                 }
             }
 
